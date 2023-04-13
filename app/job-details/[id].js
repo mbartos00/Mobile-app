@@ -1,4 +1,4 @@
-import { Stack, useRouter, useSearchParams } from 'expo-router';
+import { Stack, useNavigation, useRouter, useSearchParams } from 'expo-router';
 import { useCallback, useState } from 'react';
 import {
   View,
@@ -25,7 +25,6 @@ const tabs = ['About', 'Qualifications', 'Responsibilities'];
 const JobDetails = () => {
   const params = useSearchParams();
   const router = useRouter();
-
   const { data, isLoading, error, refetch } = useFetch('job-details', {
     job_id: params.id,
   });
@@ -78,7 +77,7 @@ const JobDetails = () => {
             <ScreenHeaderBtn
               iconUrl={icons.left}
               dimension='60%'
-              handlePress={() => router.push('/')}
+              handlePress={() => router.back()}
             />
           ),
           headerRight: () => (
